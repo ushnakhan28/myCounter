@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="increment">+</button>
+        <p id="zero">0</p>
+        <button id="decrement">-</button>
+    </div>
+    <script>
+        let add = document.getElementById('increment');
+        let remove = document.getElementById('decrement');
+        let int = document.getElementById('zero');
+        let integer = 0;
+
+        add.addEventListener('click', function () {
+            integer += 1;
+            int.innerHTML = integer;
+        })
+        remove.addEventListener('click', function () {
+            integer -= 1;
+            int.innerHTML = integer;
+        })
+    </script>
+</body>
+
+</html>

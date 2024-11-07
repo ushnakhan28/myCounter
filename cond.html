@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let age = 19;                                // if statement
+        if (age >= 18) {
+            console.log("you can vote");
+        }
+        if (age < 18) {
+            console.log("you can't vote");
+        }
+
+        //___________________________________________
+
+        let mode = "dark";                            // if statement
+        let color;
+        if (mode === "dark") {
+            color = "black";
+        }
+        if (mode === "light") {
+            color = "white";
+        }
+        console.log(color);
+
+        //___________________________________________
+
+        let bg = "light";                               // if else statement
+        let colors;
+        if (bg === "light") {
+            colors = "white";
+        } else {
+            colors = "black";
+        }
+        console.log(colors);
+
+        //____________________________________________
+
+        let umar = 16;                                   // if else statement
+        if (umar >= 18) {
+            console.log("you can vote")
+        }
+        else {
+            console.log("you can't vote")
+        }
+
+        //_____________________________________________
+
+        let a = 10;                                      // if else statement
+        if (a % 2 === 0) {
+            console.log("even number")
+        } else {
+            console.log("odd number")
+        }
+
+        //______________________________________________
+
+        let modes = "light";                             // else if statement
+        let colorss;
+        if (modes === "dark") {
+            colorss = "black";
+        } else if (modes === "pink") {
+            colorss = "pink";
+        } else if (modes === "blue") {
+            colorss = "blue"
+        } else {
+            colorss = "white"
+        }
+        console.log(colorss);
+
+        //_______________________________________________
+
+        let day = "saturday";                             //ternary operator 
+        let result = day === "saturday" ? "today" : "previous day";
+        console.log(result);
+
+        //__________________________________________________
+
+        let score = prompt("enter your score(0-100):");
+        if (score >= 90 && score <= 100) {
+            console.log("grade='A'");
+        } else if (score >= 70 && score <= 89) {
+            console.log("grade='B'");
+        } else if (score >= 60 && score <= 69) {
+            console.log("grade='C'");
+        } else if (score >= 50 && score <= 59) {
+            console.log("grade='D'");
+        } else {
+            console.log("grade='F'");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatBot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .user-message {
+            background-color: #f0f0f0;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: #dcf8c6;
+        }
+
+        .input-container {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        #sendButton {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #botResponse {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="message bot-message">ChatBot: Hi there! How can I help you?</div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+        </div>
+        <div id="botResponse"></div>
+    </div>
+
+    <script>
+        function chatBot(input) {
+            input = input.toLowerCase().trim();
+            let response = "I'm sorry, I don't understand that.";
+
+            if (input === "hello" || input === "hi") {
+                response = "Hi there!";
+            } else if (input.includes("how are you")) {
+                response = "I'm just a bot, but thanks for asking!";
+            } else if (input.includes("your name") || input.includes("who are you")) {
+                response = "I am ChatBot.";
+            } else if (input.includes("bye")) {
+                response = "Goodbye!";
+            } else if (input.includes("time")) {
+                const currentTime = new Date().toLocaleTimeString();
+                response = "The current time is " + currentTime + ".";
+            } else if (input.includes("date")) {
+                const currentDate = new Date().toLocaleDateString();
+                response = "Today's date is " + currentDate + ".";
+            } else if (input.includes("weather")) {
+                // You can implement weather API integration here to get the actual weather information
+                response = "The weather is sunny today.";
+            } else if (input.includes("thank you") || input.includes("thanks")) {
+                response = "You're welcome!";
+            }
+
+            return response;
+        }
+
+        function handleUserInput() {
+            const userInput = document.getElementById("userInput");
+            const botResponse = document.getElementById("botResponse");
+
+            const input = userInput.value;
+            const userMessage = '<div class="message user-message">You: ' + input + '</div>';
+            const botMessage = '<div class="message bot-message">ChatBot: ' + chatBot(input) + '</div>';
+
+            botResponse.innerHTML += userMessage + botMessage;
+            userInput.value = "";
+            botResponse.scrollTop = botResponse.scrollHeight;
+        }
+
+        const sendButton = document.getElementById("sendButton");
+        const userInput = document.getElementById("userInput");
+
+        sendButton.addEventListener("click", handleUserInput);
+        userInput.addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                handleUserInput();
+            }
+        });
+
+    </script>
+</body>
+
+</html>

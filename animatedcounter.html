@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 100%;
+            height: 800px;
+            background-image: url('pix/pexels-pixabay-268533.jpg');
+            background-size: 100% 100%;
+            background-blend-mode: multiply;
+            background-color: rgb(110, 110, 110);
+        }
+
+        .para {
+            color: white;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-weight: bold;
+            padding-top: 150px;
+        }
+
+        .date_para {
+            color: white;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .boxes {
+            margin-left: 200px;
+            width: 1000px;
+            height: 300px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 2;
+
+        }
+
+        .col1 {
+            width: 300px;
+            height: 300px;
+        }
+
+        input {
+            width: 200px;
+            height: 150px;
+            background-color: rgb(255, 255, 255, 0.9);
+            border-color: transparent;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="main">
+            <p class="para">WE ARE COMING SOON</p>
+            <p class="date_para" id="endDate">20 august 2024 9:00 PM</p>
+            <div class="boxes">
+                <div class="col1">
+                    <input type="text" readonly value="0">
+                    <label class="label">Days</label>
+                </div>
+                <div class="col2">
+                    <input type="text" readonly value="0">
+                    <label class="label">Hours</label>
+                </div>
+                <div class="col3">
+                    <input type="text" readonly value="0">
+                    <label class="label">Minutes</label>
+                </div>
+                <div class="col4">
+                    <input type="text" readonly value="0">
+                    <label class="label">Seconds</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const endDate = "20 august 2024 9:00 PM"
+        document.getElementById('endDate').innerText = endDate;
+        const inputs = document.querySelectorAll("input");
+        function clock() {
+            const end = new Date(endDate)
+            const now = new Date()
+            const diff = (end - now) / 1000;
+            if (diff < 0) return;
+            inputs[0].value = Math.floor(diff / 3600 / 24);
+            inputs[1].value = Math.floor(diff / 3600) % 24;
+            inputs[2].value = Math.floor(diff / 60) % 60;
+            inputs[3].value = Math.floor(diff) % 60;
+        }
+        clock()
+        setInterval(
+            () => {
+                clock()
+            },
+            1000
+        )
+    </script>
+</body>
+
+</html>

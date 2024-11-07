@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 1000px;
+            height: 700px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+        }
+
+        .img {
+            width: 1000px;
+            height: 700px;
+        }
+    </style>
+</head>
+
+<section>
+    <div>
+        <div class="main">
+            <div class="slide">
+                <img class="img" src="pix/rose-165819_640.jpg" alt="reload">
+            </div>
+            <div class="slide">
+                <img class="img" src="pix/roses-1566792_640.jpg" alt="reload">
+            </div>
+            <div class="slide">
+                <img class="img" src="pix/heart-1192662_640.jpg" alt="reload">
+            </div>
+            <div class="slide">
+                <img class="img" src="pix/butterflies-1127666_640.jpg" alt="reload">
+            </div>
+        </div>
+        <center>
+            <div class="nav">
+                <button class="prev" onclick="goPrev()">prev</button>
+                <button class="next" onclick="goNext()">next</button>
+            </div>
+        </center>
+    </div>
+</section>
+
+<script>
+    const imgs = document.querySelectorAll(".img")
+    var counter = 0;
+
+    imgs.forEach(
+        (img, index) => {
+            img.style.left = `${index * 100}%`
+        }
+    )
+
+    const goPrev = () => {
+        counter--
+        slideImg()
+    }
+
+    const goNext = () => {
+        counter++
+        slideImg()
+    }
+
+    const slideImg = () => {
+        imgs.forEach(
+            (img) => {
+                img.style.transform = `translateX (-${counter * 100}%)`
+            }
+        )
+    }
+</script>
+
+</body>
+
+</html>
